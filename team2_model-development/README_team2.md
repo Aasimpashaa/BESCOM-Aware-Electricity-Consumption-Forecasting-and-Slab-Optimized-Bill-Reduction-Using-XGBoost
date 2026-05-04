@@ -1,4 +1,4 @@
-# Team 2 — Model Development & Tuning
+# Team 2 - Model Development & Tuning
 
 **Project:** BESCOM-Aware Residential Electricity Consumption Forecasting and Slab Optimization using XGBoost Regression  
 **Internship:** IIMSTC × VTU Interdisciplinary Research Internship (Feb 2026 onwards)  
