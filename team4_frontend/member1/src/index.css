@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;700;900&family=Noto+Serif+Kannada:wght@700;800&family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Light Mode (Warm Volt Tint) ── */
+    --background: 40 30% 96%;      /* Light, warm volt/amber tint */
+    --foreground: 222 47% 11%;     /* Deep Navy text */
+    
+    --card: 0 0% 100%;             /* Pure White cards for maximum contrast */
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    --primary: 40 100% 50%;        /* Pure High-Energy Volt */
+    --primary-hover: 40 100% 40%;  /* Deep Volt */
+    --primary-foreground: 222 47% 11%; /* Dark Navy text on Volt buttons */
+    
+    --secondary: 222 47% 25%;      /* Strong Corporate Navy */
+    --secondary-hover: 222 47% 15%;
+    --secondary-foreground: 0 0% 100%; /* White text on Navy buttons */
+    
+    --accent: 142 71% 40%;         /* Emerald for success */
+    --accent-hover: 142 71% 30%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 40 20% 92%;           /* Slightly darker warm tint for inactive/inner boxes */
+    --muted-foreground: 215 16% 40%;
+    
+    --destructive: 0 84% 60%;  
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 40 20% 88%;          /* Warm borders */
+    --input: 40 20% 88%;
+    --ring: 40 100% 50%;           /* Volt focus ring */
+    
+    --radius: 0.5rem;
+
+    --chart-1: 40 100% 50%;        /* Volt */
+    --chart-2: 222 47% 30%;        /* Navy */
+    --chart-3: 142 71% 40%;        /* Emerald */
+    --chart-4: 215 16% 47%;        /* Gray */
+    --chart-5: 0 84% 60%;          /* Red */
+  }
+
+  .dark {
+    /* ── Dark Mode (Control Room) ── */
+    --background: 222 50% 6%;      /* Deepest Space Navy (Near black) */
+    --foreground: 210 40% 98%;     /* Clean white text */
+    
+    --card: 222 50% 10%;           /* Elevated deep navy */
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222 50% 10%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 43 100% 55%;        /* Glowing Neon Volt */
+    --primary-hover: 43 100% 65%;  /* Lighter Volt */
+    --primary-foreground: 222 50% 6%; /* Dark text on volt button */
+    
+    --secondary: 215 30% 20%;      /* Muted Navy */
+    --secondary-hover: 215 30% 30%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --accent: 142 71% 45%;         /* Bright Emerald */
+    --accent-hover: 142 71% 55%;
+    --accent-foreground: 222 50% 6%;
+    
+    --muted: 217 33% 15%;          /* Dark gray-blue */
+    --muted-foreground: 215 20% 65%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 43 100% 55%;
+
+    --chart-1: 43 100% 55%;
+    --chart-2: 215 80% 60%;        /* Bright Blue */
+    --chart-3: 142 71% 45%;
+    --chart-4: 215 20% 65%;
+    --chart-5: 0 62% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Animation Delays for Staggering */
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+
+  /* Smooth height transitions */
+  .transition-height {
+    transition-property: height, max-height;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  /* ── Custom Hover Animations ── */
+  
+  /* Physics-based lift for cards */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 15px 30px -10px hsl(var(--primary) / 0.2);
+  }
+
+  /* Glowing hover effect for Primary Buttons */
+  .glow-hover {
+    transition: all 0.3s ease;
+  }
+  .glow-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px 0px hsl(var(--primary) / 0.6);
+  }
+}
+
+/* ── Electric Shifting Gradient Top Bar ── */
+.animated-gradient {
+  background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 25%, #FFCC00 50%, #FF9900 75%, #1E3A8A 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+.dark .animated-gradient {
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 25%, #FFCC00 50%, #FF9900 75%, #0F172A 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* ── Legacy Animations ── */
+@keyframes barFill {
+  from { width: 0% !important; }
+}
+.bar-animate {
+  animation: barFill 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.4s both;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+:lang(kn), [lang="kn"], .lang-kn, .lang-kn * {
+  font-family: 'Noto Sans Kannada', system-ui, sans-serif !important;
+  text-transform: none !important;
+}
+
+/* Recharts Tooltip Fix */
+:root {
+  --tooltip-bg: rgba(255, 255, 255, 0.97); /* White tooltips in light mode */
+  --tooltip-border: #e2e8f0;
+  --tooltip-text: #0f172a;
+}
+.dark {
+  --tooltip-bg: rgba(10, 15, 25, 0.97); /* Deep Navy */
+  --tooltip-border: #1e293b;
+  --tooltip-text: #f8fafc;
+}
+.dark .recharts-wrapper .recharts-surface {
+  background: transparent;
+}
